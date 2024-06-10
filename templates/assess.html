@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assess Threat Actor</title>
+</head>
+<body>
+    <h1>Assess Threat Actor using {{ questionnaire.name }}</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        {% for question in questionnaire.questions %}
+            <label>{{ question.text }}</label>
+            <input type="radio" name="question_{{ question.id }}" value="yes"> Yes
+            <input type="radio" name="question_{{ question.id }}" value="no"> No<br>
+        {% endfor %}
+        {{ form.submit() }}
+    </form>
+    <a href="{{ url_for('index') }}">Back to List</a>
+</body>
+</html>

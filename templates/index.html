@@ -1,0 +1,31 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>List of Assessments</h1>
+    <ul>
+        {% for assessment in assessments %}
+        <li>
+            <a href="{{ url_for('view_assessment', assessment_id=assessment.id) }}">
+                {{ assessment.threat_actor_name }} - Total Score: {{ assessment.total_score }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h1>List of Questionnaires</h1>
+    <ul>
+        {% for questionnaire in questionnaires %}
+        <li>
+            <a href="{{ url_for('view_questions', questionnaire_id=questionnaire.id) }}">
+                {{ questionnaire.name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="container-fluid position-absolute top-0 start-0">
+        <a href="{{ url_for('create_questionnaire') }}" class="btn btn-primary">Create Questionnaire</a>
+    </div>
+{% endblock %}

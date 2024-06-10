@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Questionnaire</title>
+</head>
+<body>
+    <h1>Create a New Questionnaire</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name() }}<br>
+        {{ form.submit() }}
+    </form>
+    <a href="{{ url_for('index') }}">Back to List</a>
+</body>
+</html>

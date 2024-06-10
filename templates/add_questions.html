@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Questions</title>
+</head>
+<body>
+    <h1>Add Questions</h1>
+    {% if questionnaire %}
+        <h2>Add Questions to {{ questionnaire.name }}</h2>
+    {% endif %}
+    <form method="post">
+        {{ form.hidden_tag() }}
+        {{ form.text.label }} {{ form.text() }}<br>
+        {{ form.score_if_yes.label }} {{ form.score_if_yes() }}<br>
+        {{ form.submit() }}
+    </form>
+    <ul>
+        {% for question in questions %}
+            <li>{{ question.text }} - {{ question.score_if_yes }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Back to List</a>
+</body>
+</html>

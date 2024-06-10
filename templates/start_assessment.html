@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Start Assessment - {{ questionnaire.name }}</title>
+</head>
+<body>
+    <h1>Start Assessment for {{ questionnaire.name }}</h1>
+    <form method="post">
+        <h2>Threat Actor Name:</h2>
+        <input type="text" name="threat_actor_name" required><br><br>
+        
+        <h2>Questions:</h2>
+        {% for question in questionnaire.questions %}
+            <p>{{ question.text }}</p>
+            <label><input type="radio" name="question_{{ question.id }}" value="yes"> Yes</label>
+            <label><input type="radio" name="question_{{ question.id }}" value="no"> No</label><br>
+        {% endfor %}
+
+        <br><br>
+        <button type="submit">Submit Assessment</button>
+    </form>
+</body>
+</html>
